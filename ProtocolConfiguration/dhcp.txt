@@ -1,0 +1,87 @@
+################ DHCP CONFIG ################
+
+#Not search for the DNS server 
+  no ip domain lookup
+
+#DHCP Server Port-Based Address Allocation 
+  ip dhcp use subscriber-id client-id
+  ip dhcp subscriber-id interface-name
+
+  # Only include the reserved IP's to not offer leases to external elements
+  ip dhcp excluded-address vrf mgmt_vland X.X.X.1 X.X.X.23
+  ip dhcp excluded-address vrf mgmt_vland X.X.X.63 X.X.X.254
+
+
+# Clear DHCP bindings ( not used)  
+  clear ip dhcp binding *
+
+# Pool Name
+  ip dhcp pool bluestack-pool
+
+# Choose the VRF 
+  vrf mgmt_vland
+
+# Network with the pool and the subnet 
+  network X.X.X.0 255.255.255.0
+
+
+# Default router sent in DHCP messages (MGMT Node)
+  default-router X.X.X.1
+
+# Assign the IP address 4ever 0 days 3 hours and 0 minutes
+  lease 0 3 0
+
+# To restrict the IP address assign to the pre configured IP's addresses
+  reserved-only
+
+##Rack1
+#MANAGEMENT
+    address X.X.X.61 client-id "Gi1/0/2" ascii
+    address X.X.X.62 client-id "Gi2/0/2" ascii
+	address X.X.X.24 client-id "Gi1/0/13" ascii
+#CONTROLLERS
+	address X.X.X.25 client-id "Gi1/0/14" ascii
+	address X.X.X.26 client-id "Gi1/0/15" ascii
+	address X.X.X.27 client-id "Gi1/0/16" ascii
+#HYPER CONVERGE
+	address X.X.X.28 client-id "Gi1/0/17" ascii
+	address X.X.X.29 client-id "Gi1/0/18" ascii
+	address X.X.X.30 client-id "Gi1/0/19" ascii
+	address X.X.X.31 client-id "Gi1/0/20" ascii
+#COMPUTE
+    address X.X.X.32 client-id "Gi1/0/21" ascii
+    address X.X.X.33 client-id "Gi1/0/22" ascii
+    address X.X.X.34 client-id "Gi1/0/23" ascii
+    address X.X.X.35 client-id "Gi1/0/24" ascii
+    address X.X.X.36 client-id "Gi1/0/25" ascii
+    address X.X.X.37 client-id "Gi1/0/26" ascii
+    address X.X.X.38 client-id "Gi1/0/27" ascii
+    address X.X.X.39 client-id "Gi1/0/28" ascii
+    address X.X.X.40 client-id "Gi1/0/29" ascii
+    address X.X.X.41 client-id "Gi1/0/30" ascii
+
+##Rack2
+#COMPUTE
+    address X.X.X.42 client-id "Gi2/0/14" ascii 
+    address X.X.X.43 client-id "Gi2/0/15" ascii 
+    address X.X.X.44 client-id "Gi2/0/16" ascii 
+    address X.X.X.45 client-id "Gi2/0/17" ascii 
+    address X.X.X.46 client-id "Gi2/0/18" ascii 
+    address X.X.X.47 client-id "Gi2/0/19" ascii 
+    address X.X.X.48 client-id "Gi2/0/20" ascii 
+    address X.X.X.49 client-id "Gi2/0/21" ascii 
+    address X.X.X.50 client-id "Gi2/0/22" ascii 
+    address X.X.X.51 client-id "Gi2/0/23" ascii 
+    address X.X.X.52 client-id "Gi2/0/24" ascii 
+    address X.X.X.53 client-id "Gi2/0/25" ascii 
+    address X.X.X.54 client-id "Gi2/0/26" ascii 
+    address X.X.X.55 client-id "Gi2/0/27" ascii 
+    address X.X.X.56 client-id "Gi2/0/28" ascii 
+    address X.X.X.57 client-id "Gi2/0/29" ascii 
+    address X.X.X.58 client-id "Gi2/0/30" ascii 
+    address X.X.X.59 client-id "Gi2/0/31" ascii 
+    address X.X.X.60 client-id "Gi2/0/32" ascii
+
+#Save the configuration
+  write memory
+################ DHCP CONFIG ################
